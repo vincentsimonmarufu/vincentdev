@@ -1,0 +1,284 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,500;6..12,600;6..12,700;6..12,800;6..12,900&family=Open+Sans:wght@300;400;500;600&family=Poppins:wght@100;200;300;400;500&family=Rubik:wght@600;700;800&display=swap");
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+/* root level rules sets */
+
+ :root {
+    --main_color: #4dab04;
+    --secondary_color: #696a64;
+}
+
+
+
+
+#multi_city #flight_search {
+    border-bottom: none;
+}
+
+#multi_city #flight_search .search_field_box {
+    padding-bottom: 1rem;
+}
+
+
+
+
+#flight_search .flight_header h3 {
+    font-family: "Rubik", sans-serif;
+    letter-spacing: -1px;
+}
+
+
+
+#flight_search .flight-sub {
+    display: flex;
+    justify-content: flex-end; /* Align items to the end (right) */
+    align-items: center; /* Align items vertically in the center */
+    margin-top: 1rem;
+}
+
+#flight_search .flight-sub .main_btn {
+    background-color: var(--main_color);
+    border: 1px solid var(--main_color);
+    transition: all 0.3s ease;
+    border-radius: none;
+    font-family: "Rubik", sans-serif;
+}
+
+#flight_search .flight-sub .main_btn:hover {
+    background-color: #71bc36;
+}
+
+/* END OF FLIGHT SEARCH PAGE */
+/* END OF FLIGHT LIST */
+
+.flight_list {
+    padding: 1rem 0;
+    background-color: #f0f0f0;
+}
+
+.flight_list .list_header h5 {
+    font-family: "Rubik", sans-serif;
+    color: var(--secondary_color);
+}
+
+.flight_list p span small {
+    color: var(--main_color);
+    font-weight: 300;
+    font-size: 0.7rem;
+}
+
+.flight_list p span:last-child {
+    background-color: var(--secondary_color);
+    color: #fff;
+    padding: 0px 0.3rem 0.1rem 0.3rem;
+    border-radius: 0.2rem;
+    font-weight: 400;
+    font-size: 0.9rem;
+}
+
+.flight_list .flight_card {
+    background-color: #fff;
+    padding: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+}
+
+.flight_list .flight_card .upper_card {
+    font-weight: 300;
+    font-size: 0.9rem;
+}
+
+.flight_list .flight_card>a {
+    cursor: pointer;
+}
+
+.flight_list .flight_card .split_cards {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.flight_list .flight_card .split_cards .card_one p {
+    margin-bottom: 0;
+    text-align: end;
+    color: var(--secondary_color);
+}
+
+.flight_list .flight_card .split_cards .card_one:first-child p {
+    padding-right: 0.5rem;
+}
+
+.flight_list .flight_card .split_cards .card_one:last-child p {
+    text-align: start;
+    padding-left: 0.5rem;
+}
+
+.flight_list .flight_card .split_cards .card_one p:nth-child(1),
+.flight_list .flight_card .split_cards .card_one p:nth-child(3) {
+    font-weight: 400;
+}
+
+.flight_list .flight_card .split_cards .card_one:last-child p:nth-child(1),
+.flight_list .flight_card .split_cards .card_one:last-child p:nth-child(3) {
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1 !important;
+    overflow: hidden;
+    white-space: normal;
+    text-overflow: ellipsis !important;
+}
+
+.flight_list .flight_card .lower_time_details p {
+    background: #787974;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 300;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    margin-top: 0.3rem;
+    border-radius: 0.1rem;
+}
+
+.flight_list .flight_card .split_cards .card_one p:nth-child(2) {
+    font-weight: 300;
+    font-size: 0.8rem;
+    color: var(--main_color);
+}
+
+.flight_list .flight_card .split_cards .card_one p:nth-child(2) small:last-child {
+    background-color: #dbeecd;
+    border-radius: 0.1rem;
+    padding: 0.1rem 0.2rem;
+    color: var(--secondary_color);
+}
+
+.flight_list .flight_card .lower_card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: "Rubik", sanser;
+}
+
+.flight_list .flight_card .lower_card h2 {
+    font-family: "Rubik", sans-serif;
+    color: var(--secondary_color);
+}
+
+.flight_list .flight_card .lower_card button {
+    background-color: var(--main_color);
+    border: 1px solid var(--main_color);
+    outline: none;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.flight_list .flight_card .lower_card button:hover {
+    background-color: #71bc36;
+}
+
+.card_two {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card_two .line {
+    width: 1px;
+    height: 12px;
+    background-color: var(--main_color);
+}
+
+.card_two i {
+    font-size: 20px;
+    color: var(--main_color);
+    font-size: 0.6rem;
+    transform: rotate(180deg);
+}
+/* END OF FLIGHT LIST */
+/* END OF FLIGHT MODAL */
+
+#Itinerary_modal .modal-header h1 {
+    font-family: "Rubik", sans-serif;
+    color: var(--secondary_color);
+}
+
+#Itinerary_modal .modal-header button {
+    box-shadow: none;
+}
+
+#multi_city .modal-body,
+#Itinerary_modal .modal-body {
+    background-color: #f0f0f0;
+}
+
+#Itinerary_modal .modal-footer h4 {
+    font-family: "Rubik", sans-serif;
+    color: var(--secondary_color);
+}
+
+#multi_city .modal-footer div:last-child button:last-child,
+#Itinerary_modal .modal-footer button {
+    font-family: "Rubik", sans-serif;
+    background-color: var(--main_color);
+    border: 1px solid var(--main_color);
+    transition: all 0.3s ease;
+}
+
+#multi_city .modal-footer div:last-child button:last-child:hover,
+#Itinerary_modal .modal-footer button:hover {
+    background-color: #71bc36;
+}
+
+#multi_city .modal-footer div:first-child button {
+    font-family: "Rubik", sans-serif;
+    background-color: #71bc36;
+    border: 1px solid #71bc36;
+    transition: all 0.3s ease;
+}
+
+#multi_city .modal-footer div:first-child button:hover {
+    background-color: #b8dd9b;
+    color: var(--secondary_color);
+}
+
+#multi_city .search_field_box .close_btn {
+    font-size: .9rem;
+    border-radius: 0rem;
+    border: none;
+    background-color: var(--secondary_color);
+    transition: all .3s ease;
+}
+
+#multi_city .search_field_box .close_btn:hover {
+    background-color: #a5a6a2;
+}
+
+#multi_city .modal-header h5 {
+    font-family: "Rubik", sans-serif;
+}
+
+#multi_city .modal-footer button {
+    border: none;
+}
+/* END OF FLIGHT MODAL */
+/* BREAKPOINT */
+
+@media (min-width: 576px) {
+    #multi_city .modal-dialog {
+        max-width: 80% !important;
+    }
+}
+
+@media (max-width: 380px) {
+    #flight_search .flight_options {
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    #flight_search .flight_options .passengers {
+        margin-top: .5rem!important;
+    }
+}
