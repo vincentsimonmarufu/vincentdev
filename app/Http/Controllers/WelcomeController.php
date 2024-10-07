@@ -664,6 +664,7 @@ class WelcomeController extends Controller
             //     return view('flightseatmap', compact('seatMapData', 'flightOfferId', 'flightOfferDetail', 'deckConfiguration', 'flight_option','metaCount'));
             // }
         } catch (RequestException $e) {
+
             if ($e->hasResponse()) {
                 $errorResponse = $e->getResponse();
                 $errorStatusCode = $errorResponse->getStatusCode();
@@ -677,6 +678,7 @@ class WelcomeController extends Controller
                 if ($errorBody['errors'][0]['status'] == '400') {
 
                     if ($errorBody['errors'][0]['code'] == '14498') {
+
                         Log::error('Error details: in catch ' . $errorBody['errors'][0]['code']);
                         //need to call flight-price api  return redirect()->route('flight-price')
                         //return redirect('flight-price')->with('flightoption', $flight_option)->with('flightoffer', $flightOfferDetail);
@@ -684,6 +686,7 @@ class WelcomeController extends Controller
                     }
 
                     if ($errorBody['errors'][0]['code'] == '4926') {
+
                         Log::error('Error details: in catch ' . $errorBody['errors'][0]['code']);
                         //need to call flight-price api  return redirect()->route('flight-price')
                         //return redirect('flight-price')->with('flightoption', $flight_option)->with('flightoffer', $flightOfferDetail);
@@ -721,7 +724,7 @@ class WelcomeController extends Controller
         $flightOffer = json_decode($request['flight'], true) ?? json_decode(session('flightoffer'), true);
         $selectedSeats = $request->input('selectedSeats')[0] ?? '';
 
-
+        dd($request);
         //return ['flight_option' => $flight_option, 'flightOffer'=> $flightOffer, 'selectedSeats'=> $selectedSeats];
 
         $seatArray = explode(",", $selectedSeats);    // working

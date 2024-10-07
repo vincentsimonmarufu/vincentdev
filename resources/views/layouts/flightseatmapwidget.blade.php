@@ -278,7 +278,7 @@
                 <div id="no_of_selected_seats">Selected Seat: 0</div>
                 <!-- <div id="count">Count: 0</div>  -->
 
-                <form action="{{ route('flight-price') }}" id="form{{ $flightOfferDetail->id }}" method="POST"
+                <form action="{{ route('flight-price') }}" id="form{{ $flightOfferDetail->id }}" method="GET"
                     class="form">
                     @csrf
                     <input type="hidden" name="flight" value="{{ json_encode($flightOfferDetail) ?? '' }}" />

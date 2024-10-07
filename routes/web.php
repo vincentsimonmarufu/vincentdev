@@ -148,7 +148,7 @@ Route::post('/flight-seatmap', [WelcomeController::class, 'flightSeatMap'])->nam
 //Route::post('/confirm-seat', [WelcomeController::class, 'confirmSeatSelection'])->name('confirm.seat');
 Route::post('/update-seat-status', [WelcomeController::class, 'updateStatus'])->name('confirm.seat');
 //Route::post('/flight-price', [WelcomeController::class, 'flightprice'])->name('flight-price');
-Route::post('/flight-price', [WelcomeController::class, 'flightprice'])->name('flight-price');
+Route::get('/flight-price', [WelcomeController::class, 'flightprice'])->name('flight-price');
 Route::post('/price', GetPriceController::class)->middleware('auth');
 Route::post('/order', OrderFlightController::class)->middleware('auth');
 Route::post('/flight-booking', OrderFlightController::class)->name('flightbooking')->middleware('auth');

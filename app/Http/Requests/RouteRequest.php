@@ -7,13 +7,12 @@ use App\Rules\UniqueRoutes;
 
 class RouteRequest extends FormRequest
 {
-    
+
     public function rules()
     {
-        return [        
+        return [
             'name' => "required|unique:routes,name"
         ];
     }
-   
 
 }

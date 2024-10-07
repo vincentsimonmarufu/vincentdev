@@ -279,7 +279,7 @@
                 <div id="no_of_selected_seats">Selected Seat: 0</div>
                 <!-- <div id="count">Count: 0</div>  -->
 
-                <form action="<?php echo e(route('flight-price')); ?>" id="form<?php echo e($flightOfferDetail->id); ?>" method="POST"
+                <form action="<?php echo e(route('flight-price')); ?>" id="form<?php echo e($flightOfferDetail->id); ?>" method="GET"
                     class="form">
                     <?php echo csrf_field(); ?>
                     <input type="hidden" name="flight" value="<?php echo e(json_encode($flightOfferDetail) ?? ''); ?>" />
