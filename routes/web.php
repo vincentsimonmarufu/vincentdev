@@ -63,7 +63,9 @@ use App\Http\Controllers\{
 };
 use App\Http\Controllers\{
     ITNController,
-    PayFastController
+    PayFastController,
+    RolesController,
+    PermissionsController
 };
 use App\Http\Controllers\VehiclePictureController;
 use App\Http\Controllers\CorporateTravelController;
@@ -124,6 +126,10 @@ Route::post('corporatetravel', [CorporateTravelController::class, 'corporateFare
 Auth::routes(['verify' => true]);
 Route::get('login/redirect', [WelcomeController::class, 'getLoginRoute'])->name('login.redirect');
 Route::post('login/redirect', [WelcomeController::class, 'postLoginRoute']);
+
+// Roles and Permissions
+Route::resource('roles', RolesController::class)->middleware('auth');
+Route::resource('permissions', PermissionsController::class)->middleware('auth');
 
 Route::post('users.bookings', [UserBookingController::class, 'store']);
 Route::post('flightrequests', [FlightRequestController::class, 'store']);
