@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Models\User;
 use App\Traits\CountryTrait;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -19,7 +20,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy('id','Desc')->get();
+        $users = User::orderBy('id', 'Desc')->get();
 
         return view('users.index', compact('users'));
     }
@@ -34,18 +35,47 @@ class UserController extends Controller
         return view('users.create');
     }
 
-   
+
     public function show($id)
     {
         $user = User::findOrFail($id);
         return view('users.show', compact('user'));
     }
 
-   
+
     public function edit($id)
     {
         $user = User::findOrFail($id);
-        return view('users.edit', compact('user'));
+        $roles = Role::all();
+        return view('users.edit', compact('user', 'roles'));
+    }
+
+    public function update(Request $request, string $id)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'surname' => 'nullable|string|max:255',
+            'phone' => 'nullable|string|max:20',
+            'email' => 'required|email|max:255|unique:users,email,' . $id,
+            'address' => 'nullable|string|max:255',
+            'country' => 'nullable|string|max:255',
+            'role' => 'required|exists:roles,name',
+        ]);
+
+        $user = User::findOrFail($id);
+
+        $user->syncRoles([$request->role]);
+
+        $user->update([
+            'name' => $request->input('name'),
+            'surname' => $request->input('surname'),
+            'phone' => $request->input('phone'),
+            'email' => $request->input('email'),
+            'address' => $request->input('address'),
+            'country' => $request->input('country'),
+        ]);
+
+        return redirect()->back()->with('status', 'Successfully updated user');
     }
 
     public function verify($id)
@@ -103,36 +133,27 @@ class UserController extends Controller
 
     public function type($type)
     {
-        if ($type == 'property')
-        {
+        if ($type == 'property') {
             $users = User::join('apartments', 'apartments.user_id', 'users.id')
                 ->select('users.*')
                 ->distinct()
                 ->get();
-        }
-        else if ($type == 'vehicle')
-        {
+        } else if ($type == 'vehicle') {
             $users = User::join('vehicles', 'vehicles.user_id', 'users.id')
                 ->select('users.*')
                 ->distinct()
                 ->get();
-        }
-        else if ($type == 'bus')
-        {
+        } else if ($type == 'bus') {
             $users = User::join('buses', 'buses.user_id', 'users.id')
                 ->select('users.*')
                 ->distinct()
                 ->get();
-        }
-        else if ($type == 'shuttle')
-        {
+        } else if ($type == 'shuttle') {
             $users = User::join('shuttles', 'shuttles.user_id', 'users.id')
                 ->select('users.*')
                 ->distinct()
                 ->get();
-        }
-        else
-        {
+        } else {
             return back()->withErrors('Unsupported user type');
         }
 

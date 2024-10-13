@@ -1,25 +1,25 @@
 @extends('layouts.app')
 @section('content')
     <main id="main">
- <!-- BreadCrumb Starts -->  
- <section class="breadcrumb-main pb-0 pt-20" style="background: #000;">
-    <div class="breadcrumb-outer">
-        <div class="container">
-            <div class="breadcrumb-content d-md-flex align-items-center pt-6">
-                <h1 class="mb-0">Login</h1>
-                <nav aria-label="breadcrumb">
-                    <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('welcome') }}">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Login</li>
-                    </ul>
-                </nav>
+        <!-- BreadCrumb Starts -->
+        <section class="breadcrumb-main pb-0 pt-20" style="background: #000;">
+            <div class="breadcrumb-outer">
+                <div class="container">
+                    <div class="breadcrumb-content d-md-flex align-items-center pt-6">
+                        <h1 class="mb-0">Login</h1>
+                        <nav aria-label="breadcrumb">
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{{ route('welcome') }}">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Login</li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="dot-overlay"></div>
-    <br/>
-</section>
-<!-- BreadCrumb Ends --> 
+            <div class="dot-overlay"></div>
+            <br/>
+        </section>
+        <!-- BreadCrumb Ends -->
 
         <!-- ======= LOG-IN Section ======= -->
         <section class="signin-page account">
@@ -35,16 +35,22 @@
                                     <strong>Error!</strong>
                                     <ul>
                                         @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
+                                    <li>{{ $error }}</li>
+
+
+                                @endforeach
+                                </ul>
+                            </div>
+
+
                             @endif
                             @if ($message = Session::get('success'))
                                 <div class="alert alert-success alert-block">
                                     <button type="button" class="close" data-dismiss="alert">×</button>
                                     <strong>{{ $message }}</strong>
                                 </div>
+
+
                             @endif -->
                             @if(session('error'))
                                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -52,33 +58,32 @@
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
-                                </div>                               
+                                </div>
                             @endif
                             <h2 class="text-center">Welcome Back</h2>
                             {!!Form::open(['route'=>'login', 'class' => 'text-left clearfix'])!!}
                             @csrf
-                                <div class="form-group">
-                                    {{Form::text('email_or_phone', null, ['class'=>'form-control', 'placeholder'=>'Email/Phone number'])}}
-                                </div>
-                                <div class="form-group">
-                                    {{Form::password('password', ['class'=>'form-control', 'placeholder'=>'Password'])}}
-                                </div>
-                                <div class="text-center">
-                                    {{Form::submit('Login', ['class'=>'btn btn-success text-center'])}}
-                                </div>
+                            <div class="form-group">
+                                {{Form::text('email_or_phone', null, ['class'=>'form-control', 'placeholder'=>'Email/Phone number'])}}
+                            </div>
+                            <div class="form-group">
+                                {{Form::password('password', ['class'=>'form-control', 'placeholder'=>'Password'])}}
+                            </div>
+                            <div class="text-center">
+                                {{Form::submit('Login', ['class'=>'btn btn-success text-center'])}}
+                            </div>
                             {!! Form::close() !!}
-                            <p class="mt-20">New to this site?<a href="{{route('register')}}" style="color:rgb(14, 180, 14);"> Create New Account</a></p><br/>
-                            <p><a href="{{ route('password.request') }}" class="text-danger"> Forgot your password?</a></p>
+                            <p class="mt-20">New to this site?<a href="{{route('register')}}"
+                                                                 style="color:rgb(14, 180, 14);"> Create New Account</a>
+                            </p><br/>
+                            <p><a href="{{ route('password.request') }}" class="text-danger"> Forgot your password?</a>
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-
-
-
-        
 
     </main><!-- End #main -->
 @endsection

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Permission;
 
 class PermissionsController extends Controller
 {
@@ -11,7 +12,8 @@ class PermissionsController extends Controller
      */
     public function index()
     {
-        //
+        $permissions = Permission::all();
+        return view('permissions.index', compact('permissions'));
     }
 
     /**
@@ -19,7 +21,7 @@ class PermissionsController extends Controller
      */
     public function create()
     {
-        //
+        return view('permissions.create');
     }
 
     /**
@@ -27,7 +29,9 @@ class PermissionsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(['name' => 'required|string|max:255|unique:permissions']);
+        Permission::create(['name' => $request->name]);
+        return redirect()->route('permissions.index')->with('status', 'Permission created successfully.');
     }
 
     /**
@@ -43,7 +47,8 @@ class PermissionsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $permission = Permission::findOrFail($id);
+        return view('permissions.edit', compact('permission'));
     }
 
     /**
@@ -51,7 +56,10 @@ class PermissionsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate(['name' => 'required|string|max:255|unique:permissions,name,' . $id]);
+        $permission = Permission::findOrFail($id);
+        $permission->update(['name' => $request->name]);
+        return redirect()->route('permissions.index')->with('status', 'Permission updated successfully.');
     }
 
     /**
@@ -59,6 +67,8 @@ class PermissionsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $permission = Permission::findOrFail($id);
+        $permission->delete();
+        return redirect()->route('permissions.index')->with('status', 'Permission deleted successfully.');
     }
 }

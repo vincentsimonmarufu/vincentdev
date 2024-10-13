@@ -55,7 +55,7 @@
                          <div class="menu-title">Roles</div>
                      </a>
                      <ul>
-                         <li> <a class="collapse-item" href="">All Roles</a>
+                         <li> <a class="collapse-item" href="{{ route('roles.index') }}">All Roles</a>
                          </li>
                      </ul>
                  </li>
@@ -67,7 +67,7 @@
                          <div class="menu-title">Permissions</div>
                      </a>
                      <ul>
-                         <li> <a class="collapse-item" href="">All Permissions</a>
+                         <li> <a class="collapse-item" href="{{ route('permissions.index') }}">All Permissions</a>
                          </li>
                      </ul>
                  </li>

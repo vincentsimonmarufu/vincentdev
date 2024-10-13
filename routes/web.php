@@ -130,6 +130,8 @@ Route::post('login/redirect', [WelcomeController::class, 'postLoginRoute']);
 // Roles and Permissions
 Route::resource('roles', RolesController::class)->middleware('auth');
 Route::resource('permissions', PermissionsController::class)->middleware('auth');
+Route::get('roles/{id}/permissions/edit', [RolesController::class, 'editPermissions'])->name('roles.permissions.edit');
+Route::put('roles/{id}/permissions', [RolesController::class, 'updatePermissions'])->name('roles.permissions.update');
 
 Route::post('users.bookings', [UserBookingController::class, 'store']);
 Route::post('flightrequests', [FlightRequestController::class, 'store']);

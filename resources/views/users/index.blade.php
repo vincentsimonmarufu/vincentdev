@@ -17,30 +17,37 @@
                             <th>Action</th>
                         </thead>
                         <tbody>
-                        @foreach ($users as $user)
-                            <tr>
-                                <td>{{ $user->surname }}</td>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->phone }}</td>
-                                <td>{{ $user->email }}</td>
-                                <td>{{ $user->role }}</td>
-                                <td>
-                                    <a href="{{ route('users.verify', $user->id) }}" class="btn btn-success">Verify</a>
-                                    <a href="{{ route('users.show', $user->id) }}" class="btn btn-info">View</a>
-                                </td>
-                            </tr>
-                        @endforeach
+                            @foreach ($users as $user)
+                                <tr>
+                                    <td>{{ $user->surname }}</td>
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->phone }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>
+                                        @if ($user->getRoleNames()->isNotEmpty())
+                                            {{ implode(', ', $user->getRoleNames()->toArray()) }}
+                                        @else
+                                            No Role Assigned
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('users.verify', $user->id) }}" class="btn btn-success">Verify</a>
+                                        <a href="{{ route('users.show', $user->id) }}" class="btn btn-info">View</a>
+                                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning">Edit</a>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
-    @section('scripts')
- <script type="text/javascript">
-$(document).ready(function () {
-$('#dtBasicExample').DataTable();
-});
+@section('scripts')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#dtBasicExample').DataTable();
+        });
     </script>
 @endsection
 @endsection
