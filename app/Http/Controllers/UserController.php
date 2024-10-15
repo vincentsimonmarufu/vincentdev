@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\UserRoleImport;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\User;
 use App\Traits\CountryTrait;
 use Spatie\Permission\Models\Role;
@@ -158,5 +159,13 @@ class UserController extends Controller
         }
 
         return view('users.type', compact('users', 'type'));
+    }
+
+    public function importRoles()
+    {
+        $filePath = public_path('users.csv');
+        Excel::import(new UserRoleImport, $filePath);
+
+        return redirect()->back()->with('success', 'Data imported successfully!');
     }
 }
