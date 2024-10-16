@@ -27,11 +27,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
         crossorigin="anonymous">
 
-    {{--
-        <!--  Bootstrap Icons -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
-    --}}
-
     <!-- Main CSS File -->
     <link href="{{ asset('style.css') }}" rel="stylesheet">
 
@@ -90,14 +85,9 @@
 
     <script src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.3/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
-
-    <!-- Bootstrap JavaScript Libraries -->
-    {{--
-    <link href="{{ asset('assets/css/select2.min.css') }}" rel="stylesheet" />
-    <script src="{{ asset('assets/js/select2.min.js') }}"></script>
-    --}}
 
     <!-- Add these CDN links to your HTML -->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -112,8 +102,6 @@
             });
         });
     </script>
-
-
 
     @yield('scripts')
 

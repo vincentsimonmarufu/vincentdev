@@ -1,54 +1,63 @@
+<?php $__env->startSection('styles'); ?>
+    <style>
+        /* Additional responsive styling */
+        .nav-tabs .nav-link.active {
+            background-color: #2db838;
+            color: white;
+            border-color: #2db838 #2db838 #fff;
+        }
+
+        .nav-tabs .nav-link {
+            color: #000;
+        }
+
+        .nav-tabs .nav-link:hover {
+            color: #000;
+        }
+
+        @media (max-width: 768px) {
+            .banner {
+                height: auto;
+                padding: 20px 0;
+            }
+
+            .nav-tabs .nav-item {
+                flex-grow: 1;
+                text-align: center;
+            }
+
+            .nav-tabs .nav-link {
+                font-size: 14px;
+            }
+        }
+    </style>
+<?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
 
     <main id="main">
-        <style>
-            nav>div>span .relative {
-                display: none;
-            }
-        </style>
-        <style>
-            .imagesize {
-                width: 350px;
-                /* Set the desired width */
-                height: 200px;
-                /* Set the desired height */
-                margin: 0 auto;
-                /* Center the slider horizontally */
-            }
-
-            .imagesize img {
-                width: 100%;
-                /* Set the image width to fill the container */
-                height: 100%;
-                /* Set the image height to fill the container */
-                object-fit: cover;
-                /* Maintain aspect ratio while covering the container */
-            }
-        </style>
-
         <!-- banner starts -->
         <section class="banner position-relative text-white d-flex align-items-center justify-content-center"
-            style="background-image: url('assets/img/banner2.webp'); background-size: cover; background-position: center; height: 85vh;">
-            <div class="overlay position-absolute w-100 h-100" style="background-color: rgba(0, 0, 0, 0.5);"></div>
-            <div class="container position-relative z-index-1 text-center">
-                <h1 class="display-4 mb-3 text-white">Plan Your Perfect Getaway Today</h1>
-                <p class="lead mb-4">Whether you're seeking adventure or relaxation, TripJoy has the perfect
-                    travel deals for
-                    you. Start planning now.</p>
+            style="background-image: url('assets/img/slide/slide_2.jpg'); background-size: cover; background-position: center; height: 95vh; margin-top: 80px;">
+            <!-- Adjusted the top margin to account for the navbar height -->
+            <div class="overlay position-absolute w-100 h-100" style="background-color: rgba(51, 101, 53, 0.5);"></div>
+            <div class="container position-relative">
+                <h1 class="mb-3 text-white mt-5"><span>Affordable Air Tickets</span>,<br />
+                    Holiday Home and Car Rental Services
+                </h1>
 
                 <!-- Tabs Navigation -->
-                <ul class="nav nav-tabs rounded-top" id="bookingTabs" role="tablist">
+                <ul class="nav nav-tabs rounded-top " id="bookingTabs" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="airplane-tab" data-bs-toggle="tab" data-bs-target="#airplane"
+                        <button class="nav-link active" id="airplane-tab" data-toggle="tab" data-target="#airplane"
                             type="button" role="tab" aria-controls="airplane" aria-selected="true">Affordable Air
                             Tickets</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="hotel-tab" data-bs-toggle="tab" data-bs-target="#hotel" type="button"
+                        <button class="nav-link" id="hotel-tab" data-toggle="tab" data-target="#hotel" type="button"
                             role="tab" aria-controls="hotel" aria-selected="false">Holiday Home</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="tour-tab" data-bs-toggle="tab" data-bs-target="#tour" type="button"
+                        <button class="nav-link" id="tour-tab" data-toggle="tab" data-target="#tour" type="button"
                             role="tab" aria-controls="tour" aria-selected="false">Car Rental Services</button>
                     </li>
                 </ul>
@@ -59,47 +68,36 @@
                     <div class="tab-pane fade show active" id="airplane" role="tabpanel" aria-labelledby="airplane-tab">
                         <form>
                             <div class="row">
-                                <div class="col-md-6 mb-3">
+                                <div class="col-md-4">
                                     <label for="from" class="form-label">From</label>
                                     <input type="text" class="form-control" id="from" placeholder="e.g., Jakarta">
                                 </div>
-                                <div class="col-md-6 mb-3">
+                                <div class="col-md-4">
                                     <label for="to" class="form-label">To</label>
                                     <input type="text" class="form-control" id="to" placeholder="e.g., New York">
                                 </div>
+                                <div class="col-md-4">
+                                    <button type="submit" class="btn btn-primary"
+                                        style="background-color: #2db838; border: none;">Search</button>
+                                </div>
                             </div>
-                            <button type="submit" class="btn btn-primary w-100">Search</button>
+
                         </form>
                     </div>
 
                     <!-- Hotel Tab -->
                     <div class="tab-pane fade" id="hotel" role="tabpanel" aria-labelledby="hotel-tab">
-                        <form>
-                            <div class="mb-3">
-                                <label for="destination" class="form-label">Destination</label>
-                                <input type="text" class="form-control" id="destination" placeholder="e.g., Bali">
-                            </div>
-                            <button type="submit" class="btn btn-primary w-100">Search</button>
-                        </form>
+                        <p class="text-dark">Here 2</p>
                     </div>
 
                     <!-- Tour Tab -->
                     <div class="tab-pane fade" id="tour" role="tabpanel" aria-labelledby="tour-tab">
-                        <form>
-                            <div class="mb-3">
-                                <label for="tourDestination" class="form-label">Destination</label>
-                                <input type="text" class="form-control" id="tourDestination" placeholder="e.g., Paris">
-                            </div>
-                            <button type="submit" class="btn btn-primary w-100">Search</button>
-                        </form>
+                        <p class="text-dark">Here 3</p>
                     </div>
                 </div>
             </div>
         </section>
-
         <!-- banner ends -->
-
-
         <!-- property Starts -->
         <section class="trending">
             <div class="container">
@@ -351,62 +349,63 @@
             </div>
         </section>
         <!-- End Our Clients Section -->
-        <!-- testomonial start -->
-        <!--  <section class="testimonial pb-6 pt-9" style="background: #f6f6f6;">
-                                                                                                  <div class="container">
-                                                                                                      <div class="section-title mb-4 pb-1 w-75 mx-auto text-center">
-                                                                                                          <h2 class="m-0">Good Reviews By <span>Clients</span></h2>
-                                                                                                          <p>What our clients say about us:</p>
-                                                                                                      </div>
-                                                                                                      <div class="row review-slider">
-                                                                                                          <div class="col-sm-4 item">
-                                                                                                              <div class="testimonial-item1 text-center">
-                                                                                                                  <div class="details">
-                                                                                                                      <p class="m-0">Easy to drive, all worked well, a/c very good. Since we rent for a month and need a large car,
-                                                                                                                        we're happy each year to have a vehicle large enough for all our luggage.</p>
-                                                                                                                  </div>
-                                                                                                                  <div class="author-info mt-2">
-                                                                                                                      <div class="author-title">
-                                                                                                                          <h4 class="m-0 theme2">Jared </h4>
-                                                                                                                          <span>Supervisor</span>
-                                                                                                                      </div>
-                                                                                                                  </div>
-                                                                                                                  <i class="fa fa-quote-left mb-2"></i>
-                                                                                                              </div>
-                                                                                                          </div>
-                                                                                                          <div class="col-sm-4 item">
-                                                                                                              <div class="testimonial-item1 text-center">
-                                                                                                                  <div class="details">
-                                                                                                                      <p class="m-0">Great car, lovely helpful staff! So happy to be able to drop the car near my hotel instead of
-                                                                                                                        having to go to the airport. Highly recommended company! Thank you!</p>
-                                                                                                                  </div>
-                                                                                                                  <div class="author-info mt-2">
-                                                                                                                      <div class="author-title">
-                                                                                                                          <h4 class="m-0 theme2">Clive</h4>
-                                                                                                                          <span>Sr. Consultant</span>
-                                                                                                                      </div>
-                                                                                                                  </div>
-                                                                                                                  <i class="fa fa-quote-left mb-2"></i>
-                                                                                                              </div>
-                                                                                                          </div>
-                                                                                                          <div class="col-sm-4 item">
-                                                                                                              <div class="testimonial-item1 text-center">
-                                                                                                                  <div class="details">
-                                                                                                                      <p class="m-0">Very satisfied with this rental. The representatives were professional and helpful.
-                                                                                                                        The care rental area was easy to navigate and convenient to the terminal</p>
-                                                                                                                  </div>
-                                                                                                                  <div class="author-info mt-2">
-                                                                                                                      <div class="author-title">
-                                                                                                                          <h4 class="m-0 theme2">Jonathan </h4>
-                                                                                                                          <span>Sales Manager</span>
-                                                                                                                      </div>
-                                                                                                                  </div>
-                                                                                                                  <i class="fa fa-quote-left mb-2"></i>
-                                                                                                              </div>
-                                                                                                          </div>
-                                                                                                      </div>
-                                                                                                  </div>
-                                                                                              </section>-->
+        <div class="container">
+            <div class="section-title mb-4 pb-1 w-75 mx-auto text-center">
+                <h2 class="m-0">Good Reviews By <span>Clients</span></h2>
+                <p>What our clients say about us:</p>
+            </div>
+            <div class="row review-slider">
+                <div class="col-sm-4 item">
+                    <div class="testimonial-item1 text-center">
+                        <div class="details">
+                            <p class="m-0">Easy to drive, all worked well, a/c very good. Since we rent for a month and
+                                need a large car,
+                                we're happy each year to have a vehicle large enough for all our luggage.</p>
+                        </div>
+                        <div class="author-info mt-2">
+                            <div class="author-title">
+                                <h4 class="m-0 theme2">Jared </h4>
+                                <span>Supervisor</span>
+                            </div>
+                        </div>
+                        <i class="fa fa-quote-left mb-2"></i>
+                    </div>
+                </div>
+                <div class="col-sm-4 item">
+                    <div class="testimonial-item1 text-center">
+                        <div class="details">
+                            <p class="m-0">Great car, lovely helpful staff! So happy to be able to drop the car near my
+                                hotel instead of
+                                having to go to the airport. Highly recommended company! Thank you!</p>
+                        </div>
+                        <div class="author-info mt-2">
+                            <div class="author-title">
+                                <h4 class="m-0 theme2">Clive</h4>
+                                <span>Sr. Consultant</span>
+                            </div>
+                        </div>
+                        <i class="fa fa-quote-left mb-2"></i>
+                    </div>
+                </div>
+                <div class="col-sm-4 item">
+                    <div class="testimonial-item1 text-center">
+                        <div class="details">
+                            <p class="m-0">Very satisfied with this rental. The representatives were professional and
+                                helpful.
+                                The care rental area was easy to navigate and convenient to the terminal</p>
+                        </div>
+                        <div class="author-info mt-2">
+                            <div class="author-title">
+                                <h4 class="m-0 theme2">Jonathan </h4>
+                                <span>Sales Manager</span>
+                            </div>
+                        </div>
+                        <i class="fa fa-quote-left mb-2"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </section>-->
         <!-- testimonial ends -->
     </main><!-- End #main -->
 <?php $__env->stopSection(); ?>
