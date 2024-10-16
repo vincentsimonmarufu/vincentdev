@@ -1,3 +1,24 @@
+<style>
+    #visitorCountDisplay {
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 20px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        padding: 1px 1px;
+        background-color: #f2f2f2;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        display: inline-block;
+        color: #333;
+        margin: 20px;
+        position: relative;
+        box-shadow:
+            0 4px 8px rgba(0, 0, 0, 0.1),
+            0 0 0 4px #fff,
+            0 0 0 8px #ccc;
+    }
+</style>
+
 <section class="newsletter p-0 position-relative">
     <div class="newsletter-main bg-theme2 p-5 pb-3">
         <div class="container">
@@ -7,7 +28,8 @@
                         <h2 class="mb-0 white text-lg-start text-center">
                             Do You Need Help With Anything?
                         </h2>
-                        <p class="mb-0 white">Receive updates, hot deals, discounts sent straignt in your inbox every month</p>
+                        <p class="mb-0 white">Receive updates, hot deals, discounts sent straignt in your inbox every
+                            month</p>
                     </div>
                 </div>
                 <div class="col-lg-4 mb-2">
@@ -15,7 +37,8 @@
                     <div class="newsletter-form_avoid w-100">
                         <form id="subscribe-form">
                             <?php echo csrf_field(); ?>
-                            <input type="text" name="fullname" id="fullname" placeholder="Full Name" required>
+                            <input class="form-control" type="text" name="fullname" id="fullname"
+                                placeholder="Full Name" required>
                             <input type="email" name="email" id="email" placeholder="Email Address" required>
                             <button type="submit" class="nir-btn-black">Subscribe</button>
                         </form>
@@ -44,10 +67,11 @@
                         <h3 class="white">Zimbabwe</h3>
                         <ul>
                             <li class="white"><strong>Phone:</strong> +263 777 223 158</li>
-                            <li class="white"><strong>New Office Address:</strong> Cnr Prince Edward and Lezard, Milton park</li>
+                            <li class="white"><strong>New Office Address:</strong> Cnr Prince Edward and Lezard,
+                                Milton park</li>
                             <li class="white"><strong>Location:</strong> Harare, Zimbabwe</li>
                             <li class="white"><strong>Email:</strong> info@abisiniya.com</li>
-                            <li class="white"><strong>Website:</strong> www.abisiniya.com</li>                           
+                            <li class="white"><strong>Website:</strong> www.abisiniya.com</li>
                         </ul>
                     </div>
                 </div>
@@ -56,9 +80,10 @@
                         <h3 class="white">South Africa</h3>
                         <ul>
                             <li class="white"><strong>Phone:</strong> +27 65 532 6408</li>
-                            <li class="white"><strong>Location:</strong> 28 Mint Road, 3rd Floor, Fordsburg, Johannesburg, South Africa</li>
+                            <li class="white"><strong>Location:</strong> 28 Mint Road, 3rd Floor, Fordsburg,
+                                Johannesburg, South Africa</li>
                             <li class="white"><strong>Email:</strong> info@abisiniya.com</li>
-                            <li class="white"><strong>Website:</strong> www.abisiniya.com</li>                          
+                            <li class="white"><strong>Website:</strong> www.abisiniya.com</li>
                         </ul>
                     </div>
                 </div>
@@ -66,51 +91,34 @@
                     <div class="footer-links">
                         <h3 class="white">Our Services</h3>
                         <div class="tagcloud">
-                            <a class="tag-cloud-link bg-white black p-2 mb-1" href="<?php echo e(route('flight')); ?>">Flight Booking</a>
-                            <a class="tag-cloud-link bg-white black p-2 mb-1" href="<?php echo e(route('car_hire')); ?>">Car Hire</a>
-                            <a class="tag-cloud-link bg-white black p-2 mb-1" href="<?php echo e(route('apartments.all')); ?>">Accomodation</a>
+                            <a class="tag-cloud-link bg-white black p-2 mb-1" href="<?php echo e(route('flight')); ?>">Flight
+                                Booking</a>
+                            <a class="tag-cloud-link bg-white black p-2 mb-1" href="<?php echo e(route('car_hire')); ?>">Car
+                                Hire</a>
+                            <a class="tag-cloud-link bg-white black p-2 mb-1"
+                                href="<?php echo e(route('apartments.all')); ?>">Accomodation</a>
                             <a class="tag-cloud-link bg-white black p-2 mb-1" href="#">VISA</a>
                             <a class="tag-cloud-link bg-white black p-2 mb-1" href="#">Airport Shuttle</a>
                         </div>
                     </div>
                 </div>
-            </div> 
-            <div class="col-md-10 offset-md-5">           
-            <?php
-                {{ $visitorCount = \App\Models\Visitor::count(); }}
-            ?>
-            <style>
-    #visitorCountDisplay {
-        font-weight: bold;
-        text-transform: uppercase;
-        font-size: 20px;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        padding: 1px 1px; 
-        background-color: #f2f2f2; 
-        border: 1px solid #ccc;
-        border-radius: 8px; 
-        display: inline-block; 
-        color: #333; 
-        margin: 20px; 
-        position: relative;
-        box-shadow: 
-        0 4px 8px rgba(0, 0, 0, 0.1), 
-        0 0 0 4px #fff, 
-        0 0 0 8px #ccc; 
-    }
-</style>
+            </div>
+            <div class="col-md-10 offset-md-5">
+                <?php
+                    {{ $visitorCount = \App\Models\Visitor::count(); }}
+                ?>
 
-        <span id="visitorCountDisplay"><strong>Visitor No:</strong> <?php echo e(11000+$visitorCount); ?></span>
-                
-        </div>         
+                <span id="visitorCountDisplay"><strong>Visitor No:</strong> <?php echo e(11000 + $visitorCount); ?></span>
+
+            </div>
         </div>
-        
-    </div>    
+
+    </div>
     <div class="footer-copyright pt-2 pb-2">
         <div class="container">
-            <div class="copyright-inner d-md-flex align-items-center justify-content-between">
+            <div class="copyright-inner d-md-flex align-items-center justify-content-center">
                 <div class="copyright-text">
-                    <p class="m-0 white"> <a href="abisiniya.com">2023 Abisiniya. All rights reserved.</a></p>
+                    <p class="m-0 white"> <a href="abisiniya.com"><?php echo e(date('Y')); ?> Abisiniya. All rights reserved.</a></p>
                 </div>
 
             </div>
@@ -125,39 +133,40 @@
 </div>
 
 <?php $__env->startSection('scripts'); ?>
-<script>
-    $(document).ready(function() {
-        $('#subscribe-form').submit(function(e) {
-            e.preventDefault();
-            var fullname = $('#fullname').val();
-            var email = $('#email').val();
-            $.ajax({
-                type: 'POST',
-                url: '<?php echo e(route("newsletters.subscibe")); ?>',
-                data: {
-                    fullname: fullname,
-                    email: email,
-                    _token: "<?php echo e(csrf_token()); ?>"
-                },
-                success: function(response) {
-                    $('#message').html('<p>' + response.message + '</p>');
-                    $('#fullname').val(''); 
-                    $('#email').val('');                    
-                    setTimeout(function() {
-                        $('#message').empty(); 
-                    }, 3000); 
-                },
-                error: function(xhr, status, error) {
-                    var errorMessage = xhr.responseJSON.message;
-                    $('#message').html('<p>' + errorMessage + '</p>');
-                    $('#fullname').val('');
-                    $('#email').val(''); 
-                    setTimeout(function() {
-                        $('#message').empty(); 
-                    }, 3000); 
-                }
+    <script>
+        $(document).ready(function() {
+            $('#subscribe-form').submit(function(e) {
+                e.preventDefault();
+                var fullname = $('#fullname').val();
+                var email = $('#email').val();
+                $.ajax({
+                    type: 'POST',
+                    url: '<?php echo e(route('newsletters.subscibe')); ?>',
+                    data: {
+                        fullname: fullname,
+                        email: email,
+                        _token: "<?php echo e(csrf_token()); ?>"
+                    },
+                    success: function(response) {
+                        $('#message').html('<p>' + response.message + '</p>');
+                        $('#fullname').val('');
+                        $('#email').val('');
+                        setTimeout(function() {
+                            $('#message').empty();
+                        }, 3000);
+                    },
+                    error: function(xhr, status, error) {
+                        var errorMessage = xhr.responseJSON.message;
+                        $('#message').html('<p>' + errorMessage + '</p>');
+                        $('#fullname').val('');
+                        $('#email').val('');
+                        setTimeout(function() {
+                            $('#message').empty();
+                        }, 3000);
+                    }
+                });
             });
         });
-    });
-</script>
-<?php $__env->stopSection(); ?><?php /**PATH C:\Users\vince\Documents\Workspace\Abisiniya\abisiniya82\resources\views/layouts/footer.blade.php ENDPATH**/ ?>
+    </script>
+<?php $__env->stopSection(); ?>
+<?php /**PATH C:\Users\vince\Documents\Workspace\Abisiniya\abisiniya82\resources\views/layouts/footer.blade.php ENDPATH**/ ?>

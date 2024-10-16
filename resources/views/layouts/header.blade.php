@@ -80,8 +80,7 @@
                         @auth
                             <a href="{{ url('/home') }}" class="nir-btn white"> Dashboard</a>
                         @else
-                            <a href="{{ route('login') }}" class="nir-btn white" style="background:#2db838 "> <i
-                                    class="fa fa-user"></i>
+                            <a href="{{ route('login') }}" class="nir-btn white"> <i class="fa fa-user"></i>
                                 Login/Register</a>
 
                         @endauth

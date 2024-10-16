@@ -38,67 +38,7 @@
 
     <main id="main">
         <!-- banner starts -->
-        <section class="banner position-relative text-white d-flex align-items-center justify-content-center"
-            style="background-image: url('assets/img/slide/slide_2.jpg'); background-size: cover; background-position: center; height: 95vh; margin-top: 80px;">
-            <!-- Adjusted the top margin to account for the navbar height -->
-            <div class="overlay position-absolute w-100 h-100" style="background-color: rgba(51, 101, 53, 0.5);"></div>
-            <div class="container position-relative">
-                <h1 class="mb-3 text-white mt-5"><span>Affordable Air Tickets</span>,<br />
-                    Holiday Home and Car Rental Services
-                </h1>
-
-                <!-- Tabs Navigation -->
-                <ul class="nav nav-tabs rounded-top " id="bookingTabs" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="airplane-tab" data-toggle="tab" data-target="#airplane"
-                            type="button" role="tab" aria-controls="airplane" aria-selected="true">Affordable Air
-                            Tickets</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="hotel-tab" data-toggle="tab" data-target="#hotel" type="button"
-                            role="tab" aria-controls="hotel" aria-selected="false">Holiday Home</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="tour-tab" data-toggle="tab" data-target="#tour" type="button"
-                            role="tab" aria-controls="tour" aria-selected="false">Car Rental Services</button>
-                    </li>
-                </ul>
-
-                <!-- Tabs Content -->
-                <div class="tab-content border border-top-0 bg-white p-4 rounded-bottom shadow-sm" id="bookingTabsContent">
-                    <!-- Airplane Ticket Tab -->
-                    <div class="tab-pane fade show active" id="airplane" role="tabpanel" aria-labelledby="airplane-tab">
-                        <form>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <label for="from" class="form-label">From</label>
-                                    <input type="text" class="form-control" id="from" placeholder="e.g., Jakarta">
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="to" class="form-label">To</label>
-                                    <input type="text" class="form-control" id="to" placeholder="e.g., New York">
-                                </div>
-                                <div class="col-md-4">
-                                    <button type="submit" class="btn btn-primary"
-                                        style="background-color: #2db838; border: none;">Search</button>
-                                </div>
-                            </div>
-
-                        </form>
-                    </div>
-
-                    <!-- Hotel Tab -->
-                    <div class="tab-pane fade" id="hotel" role="tabpanel" aria-labelledby="hotel-tab">
-                        <p class="text-dark">Here 2</p>
-                    </div>
-
-                    <!-- Tour Tab -->
-                    <div class="tab-pane fade" id="tour" role="tabpanel" aria-labelledby="tour-tab">
-                        <p class="text-dark">Here 3</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+        @include('partials.home-tabs')
         <!-- banner ends -->
         <!-- property Starts -->
         <section class="trending">
@@ -144,8 +84,7 @@
                                                         </ul>
                                                     </div>
                                                 </div>
-                                                <ul
-                                                    class="d-flex align-items-center justify-content-between border-t pt-2">
+                                                <ul class="d-flex align-items-center justify-content-between border-t pt-2">
                                                     <li class="me-2"><i class="fa fa-eye"></i> {{ $apartment->bedroom }}
                                                         Bedroom(s)</li>
                                                     <li class="me-2"><i class="fa fa-heart"></i>

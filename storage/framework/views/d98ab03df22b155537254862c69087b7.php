@@ -80,8 +80,7 @@
                         <?php if(auth()->guard()->check()): ?>
                             <a href="<?php echo e(url('/home')); ?>" class="nir-btn white"> Dashboard</a>
                         <?php else: ?>
-                            <a href="<?php echo e(route('login')); ?>" class="nir-btn white" style="background:#2db838 "> <i
-                                    class="fa fa-user"></i>
+                            <a href="<?php echo e(route('login')); ?>" class="nir-btn white"> <i class="fa fa-user"></i>
                                 Login/Register</a>
 
                         <?php endif; ?>
