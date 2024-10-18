@@ -32,7 +32,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="alert alert-danger">
-                                An error occurred while searching for a flight. <br/>
+                                An error occurred while searching for a flight. <br />
                                 Please ensure that you have entered the correct details:
                                 <ul>
                                     <li>1. Ensure accurate information for the departure and destination fields,
@@ -40,8 +40,8 @@
                                     </li>
                                     <li>2. Make sure the selected date is in the future.</li>
                                 </ul>
-                                <br/>
-                                If the issue persists, please review the error details below:<br/>
+                                <br />
+                                If the issue persists, please review the error details below:<br />
                                 <strong>Error:</strong> <?php echo e($errors->first('exception')); ?>
 
                             </div>
@@ -89,9 +89,9 @@
                                             <!--<i class="bi bi-crosshair"></i>-->
                                             From
                                             <input type="text" class="form-control " placeholder="Where From"
-                                                   name="origin_airport" id="airportInput" required>
+                                                name="origin_airport" id="airportInput" required>
                                             <!-- Add a hidden input field to store the selected IATA code -->
-                                            <input type="hidden" name="origin" id="origin"/>
+                                            <input type="hidden" name="origin" id="origin" />
                                         </div>
                                     </div>
                                 </div>
@@ -101,10 +101,10 @@
                                             <!--<i class="bi bi-geo"></i>-->
                                             Destination
                                             <input type="text" class="form-control " style="width: 100%;"
-                                                   placeholder="Where To" name="destination_airport" id="airportTo"
-                                                   required>
+                                                placeholder="Where To" name="destination_airport" id="airportTo"
+                                                required>
                                             <!-- Add a hidden input field to store the selected IATA code -->
-                                            <input type="hidden" name="destination" id="destination"/>
+                                            <input type="hidden" name="destination" id="destination" />
                                         </div>
                                     </div>
                                 </div>
@@ -114,8 +114,8 @@
                                     <div class="mt-3">
                                         <div class="input-icon">
                                             Adults (12 years and older)
-                                            <input type="number" min="0" value="1" class="form-control" name="adults"
-                                                   id="adults-input" required>
+                                            <input type="number" min="0" value="1" class="form-control"
+                                                name="adults" id="adults-input" required>
                                             <div id="adult-message" class="message" style="display:none;">At least one
                                                 adult must be selected
                                             </div>
@@ -126,8 +126,8 @@
                                     <div class="mt-3">
                                         <div class="input-icon">
                                             Children (2 to 11 years old)
-                                            <input type="number" min="0" value="0" class="form-control" name="children"
-                                                   id="children-input">
+                                            <input type="number" min="0" value="0" class="form-control"
+                                                name="children" id="children-input">
                                             <div id="children-message" class="message" style="display:none;">Maximum 5
                                                 children allowed
                                             </div>
@@ -138,14 +138,14 @@
                                     <div class="mt-3">
                                         <div class="input-icon">
                                             Infants (Under 2 years old)
-                                            <input type="number" value="0" min="0" class="form-control" name="infants"
-                                                   id="infants-input">
+                                            <input type="number" value="0" min="0" class="form-control"
+                                                name="infants" id="infants-input">
                                             <div id="infant-message" class="message" style="display:none;"></div>
                                         </div>
                                     </div>
                                 </div>
                                 <script>
-                                    document.addEventListener("DOMContentLoaded", function () {
+                                    document.addEventListener("DOMContentLoaded", function() {
                                         const adultsInput = document.getElementById('adults-input');
                                         const childrenInput = document.getElementById('children-input');
                                         const infantsInput = document.getElementById('infants-input');
@@ -192,7 +192,8 @@
                                                 const maxPassengers = 9 - adults - infants;
                                                 //childrenInput.value = maxPassengers > 5 ? 5 : maxPassengers;
                                                 childrenInput.value = maxPassengers > 5 ? 5 : 0;
-                                                showMessage('total-message', 'Total passengers (adults, children, and infants) cannot exceed 9.');
+                                                showMessage('total-message',
+                                                    'Total passengers (adults, children, and infants) cannot exceed 9.');
                                             } else {
                                                 hideMessage('total-message');
                                             }
@@ -216,25 +217,25 @@
                                 </script>
 
                                 <span id="adult-infant-message" class="text-center"
-                                      style="display:none; color:red; text-align: left; margin-left: 33.33%;"></span>
+                                    style="display:none; color:red; text-align: left; margin-left: 33.33%;"></span>
                                 <span id="adult-child-message" class="text-center"
-                                      style="display:none; color:red; text-align: left; margin-left: 33.33%;"></span>
+                                    style="display:none; color:red; text-align: left; margin-left: 33.33%;"></span>
                                 <span id="total-message" class="text-center"
-                                      style="display:none; color:red; text-align: left; margin-left: 33.33%;"></span>
+                                    style="display:none; color:red; text-align: left; margin-left: 33.33%;"></span>
 
                             </div>
-                                <?php
-                                $currentDate = date('Y-m-d');
-                                $oneYearLater = date('Y-m-d', strtotime('+1 year', strtotime($currentDate)));
-                                ?>
+                            <?php
+                            $currentDate = date('Y-m-d');
+                            $oneYearLater = date('Y-m-d', strtotime('+1 year', strtotime($currentDate)));
+                            ?>
                             <div class="row">
                                 <div class="col-md-6 col-sm-6 col-12">
                                     <div class="mt-3">
                                         <div class="input-icon">
                                             Departure Date
-                                            <input type="date" min="<?php echo $currentDate; ?>"
-                                                   max="<?php echo $oneYearLater; ?>" class="form-control" id=""
-                                                   placeholder="Select Departure Date" name="departure_date" required>
+                                            <input type="date" min="<?php echo $currentDate; ?>" max="<?php echo $oneYearLater; ?>"
+                                                class="form-control" id=""
+                                                placeholder="Select Departure Date" name="departure_date" required>
                                         </div>
                                     </div>
                                 </div>
@@ -242,9 +243,9 @@
                                     <div class="mt-3">
                                         <div class="input-icon">
                                             Return Date
-                                            <input type="date" min="<?php echo $currentDate; ?>"
-                                                   max="<?php echo $oneYearLater; ?>" class="form-control" id=""
-                                                   placeholder="Select Return Date" name="return_date">
+                                            <input type="date" min="<?php echo $currentDate; ?>" max="<?php echo $oneYearLater; ?>"
+                                                class="form-control" id="" placeholder="Select Return Date"
+                                                name="return_date">
                                         </div>
                                     </div>
                                 </div>
@@ -265,10 +266,10 @@
 
 <?php if(isset($flights)): ?>
     <section class="flight_list" style="padding-top: -30">
-        <p class=" alert alert-success text-center text-dark"><br/>
-            <?php echo e($flight_option); ?> Search &nbsp;&nbsp; ✈️ <br/>
-            <?php echo e(count($flights)); ?> Results found<br/></p>
-        <?php if( count($flights) > 0): ?>
+        <p class=" alert alert-success text-center text-dark"><br />
+            <?php echo e($flight_option); ?> Search &nbsp;&nbsp; ✈️ <br />
+            <?php echo e(count($flights)); ?> Results found<br /></p>
+        <?php if(count($flights) > 0): ?>
             <div class="container">
                 <div class="row">
                     <div class="col-12">
@@ -281,11 +282,15 @@
                                             $firstSegment = reset($segments);
 
                                             $accessTokenController = app('App\Http\Controllers\WelcomeController');
-                                            $departure = $accessTokenController->airportName($firstSegment->departure->iataCode);
+                                            $departure = $accessTokenController->airportName(
+                                                $firstSegment->departure->iataCode,
+                                            );
 
                                             // Get the last segment
                                             $lastSegment = end($segments);
-                                            $arrival = $accessTokenController->airportName($lastSegment->arrival->iataCode);
+                                            $arrival = $accessTokenController->airportName(
+                                                $lastSegment->arrival->iataCode,
+                                            );
 
                                             $airlineCode = $firstSegment->carrierCode;
                                             // $imageUrl = "https://www.gstatic.com/flights/airline_logos/70px/dark/{$airlineCode}.png";
@@ -318,10 +323,12 @@
                                                             <small><?php echo e(\Carbon\Carbon::parse($firstSegment->departure->at)->format('H:i')); ?></small>
                                                         </p>
                                                         <p>
-                                                            <small><?php echo e(formatDuration( $flight->itineraries[0]->duration)); ?></small>
+                                                            <small><?php echo e(formatDuration($flight->itineraries[0]->duration)); ?></small>
                                                         </p>
                                                         <p>
-                                                            <small><?php echo e(\Carbon\Carbon::parse($lastSegment->arrival->at)->format('H:i')); ?> </small>
+                                                            <small><?php echo e(\Carbon\Carbon::parse($lastSegment->arrival->at)->format('H:i')); ?>
+
+                                                            </small>
                                                         </p>
                                                     </div>
                                                     <div class="card_two">
@@ -333,14 +340,16 @@
                                                         <p>
                                                             <small><?php echo e($departure); ?>
 
-                                                                (<?php echo e($firstSegment->departure->iataCode); ?>)</small>
+                                                                (<?php echo e($firstSegment->departure->iataCode); ?>)
+                                                            </small>
                                                         </p>
                                                         <p>
-                                                            <small><img src="<?php echo e($imageUrl); ?>" alt="<?php echo e($airlineCode); ?>"
-                                                                        title="<?php echo e($airlineCode); ?>"
-                                                                        height="20px"></small>
-                                                            <small
-                                                                class="ms-1"> <?php echo e($flight->travelerPricings[0]->fareDetailsBySegment[0]->cabin); ?></small>
+                                                            <small><img src="<?php echo e($imageUrl); ?>"
+                                                                    alt="<?php echo e($airlineCode); ?>"
+                                                                    title="<?php echo e($airlineCode); ?>"
+                                                                    height="20px"></small>
+                                                            <small class="ms-1">
+                                                                <?php echo e($flight->travelerPricings[0]->fareDetailsBySegment[0]->cabin); ?></small>
                                                         </p>
                                                         <p>
                                                             <small><?php echo e($arrival); ?>
@@ -352,11 +361,12 @@
                                                 <div class="upper_card">
                                                     <p class="text-muted mb-1">
                                                         <small><?php echo e(\App\Models\Airline::where('code', $firstSegment->carrierCode)->first()->name); ?></small>
-                                                        <small class="ms-1">(<?php echo e($firstSegment->carrierCode); ?>)</small>
+                                                        <small
+                                                            class="ms-1">(<?php echo e($firstSegment->carrierCode); ?>)</small>
                                                     </p>
                                                 </div>
                                                 <div class="line"></div>
-                                                <hr/>
+                                                <hr />
                                                 <!-------- return flight-->
                                                 <div class="upper_card">
                                                     <p class="text-muted mb-1"><small>Returning Flight</small>
@@ -372,10 +382,12 @@
                                                             <small><?php echo e(\Carbon\Carbon::parse($second_firstSegment->departure->at)->format('H:i')); ?></small>
                                                         </p>
                                                         <p>
-                                                            <small><?php echo e(formatDuration( $flight->itineraries[1]->duration)); ?></small>
+                                                            <small><?php echo e(formatDuration($flight->itineraries[1]->duration)); ?></small>
                                                         </p>
                                                         <p>
-                                                            <small><?php echo e(\Carbon\Carbon::parse($second_lastSegment->arrival->at)->format('H:i')); ?> </small>
+                                                            <small><?php echo e(\Carbon\Carbon::parse($second_lastSegment->arrival->at)->format('H:i')); ?>
+
+                                                            </small>
                                                         </p>
                                                     </div>
                                                     <div class="card_two">
@@ -393,10 +405,11 @@
                                                         </p>
                                                         <p>
                                                             <small><img src="<?php echo e($second_imageUrl); ?>"
-                                                                        alt="<?php echo e($second_airlineCode); ?>"
-                                                                        title="<?php echo e($second_airlineCode); ?>" height="20px"></small>
-                                                            <small
-                                                                class="ms-1"> <?php echo e($flight->travelerPricings[0]->fareDetailsBySegment[0]->cabin); ?></small>
+                                                                    alt="<?php echo e($second_airlineCode); ?>"
+                                                                    title="<?php echo e($second_airlineCode); ?>"
+                                                                    height="20px"></small>
+                                                            <small class="ms-1">
+                                                                <?php echo e($flight->travelerPricings[0]->fareDetailsBySegment[0]->cabin); ?></small>
                                                         </p>
                                                         <p>
                                                             <small><?php echo e($departure); ?>
@@ -408,12 +421,13 @@
                                                 <div class="upper_card">
                                                     <p class="text-muted mb-1">
                                                         <small><?php echo e(\App\Models\Airline::where('code', $firstSegment->carrierCode)->first()->name); ?></small>
-                                                        <small class="ms-1">(<?php echo e($firstSegment->carrierCode); ?>)</small>
+                                                        <small
+                                                            class="ms-1">(<?php echo e($firstSegment->carrierCode); ?>)</small>
                                                     </p>
                                                 </div>
 
                                                 <div class="line"></div>
-                                                <hr/>
+                                                <hr />
                                                 <div class="lower_card h-100">
 
                                                     <h3 class="mb-0">
@@ -421,16 +435,18 @@
                                                     </h3>
 
                                                     <form action="<?php echo e(route('flight-price')); ?>"
-                                                          id="form<?php echo e($flight->id); ?>" method="GET" class="form">
+                                                        id="form<?php echo e($flight->id); ?>" method="GET" class="form">
                                                         <?php echo csrf_field(); ?>
                                                         <input type="hidden" name="flight"
-                                                               value="<?php echo e(json_encode($flight)); ?>"/>
+                                                            value="<?php echo e(json_encode($flight)); ?>" />
                                                         <input type="hidden" name="flightofferid"
-                                                               value="<?php echo e($flight->id); ?>"/>
-                                                        <input type="hidden" name="departure" value="<?php echo e($departure); ?>"/>
-                                                        <input type="hidden" name="arrival" value="<?php echo e($arrival); ?>"/>
+                                                            value="<?php echo e($flight->id); ?>" />
+                                                        <input type="hidden" name="departure"
+                                                            value="<?php echo e($departure); ?>" />
+                                                        <input type="hidden" name="arrival"
+                                                            value="<?php echo e($arrival); ?>" />
                                                         <input type="hidden" name="flight_option"
-                                                               value="<?php echo e($flight_option); ?>"/>
+                                                            value="<?php echo e($flight_option); ?>" />
                                                         <button type="submit" class="btn btn-primary">Select</button>
                                                     </form>
 
@@ -440,13 +456,14 @@
                                         </div>
                                     </div>
                                 </div>
-
                             <?php else: ?>
                                 <?php
                                     $segments = $flight->itineraries[0]->segments;
                                     $firstSegment = reset($segments);
                                     $accessTokenController = app('App\Http\Controllers\WelcomeController');
-                                    $departure = $accessTokenController->airportName($firstSegment->departure->iataCode);
+                                    $departure = $accessTokenController->airportName(
+                                        $firstSegment->departure->iataCode,
+                                    );
                                     // Get the last segment
                                     $lastSegment = end($segments);
                                     $arrival = $accessTokenController->airportName($lastSegment->arrival->iataCode);
@@ -470,10 +487,12 @@
                                                     <small><?php echo e(\Carbon\Carbon::parse($firstSegment->departure->at)->format('H:i')); ?></small>
                                                 </p>
                                                 <p>
-                                                    <small><?php echo e(formatDuration( $flight->itineraries[0]->duration)); ?></small>
+                                                    <small><?php echo e(formatDuration($flight->itineraries[0]->duration)); ?></small>
                                                 </p>
                                                 <p>
-                                                    <small><?php echo e(\Carbon\Carbon::parse($lastSegment->arrival->at)->format('H:i')); ?> </small>
+                                                    <small><?php echo e(\Carbon\Carbon::parse($lastSegment->arrival->at)->format('H:i')); ?>
+
+                                                    </small>
                                                 </p>
                                             </div>
                                             <div class="card_two">
@@ -485,16 +504,18 @@
 
                                             <div class="card_one">
                                                 <p>
-                                                    <small><?php echo e($departure); ?> (<?php echo e($firstSegment->departure->iataCode); ?>
+                                                    <small><?php echo e($departure); ?>
+
+                                                        (<?php echo e($firstSegment->departure->iataCode); ?>
 
                                                         )</small>
                                                 </p>
                                                 <p>
                                                     &nbsp;
                                                     <small><img src="<?php echo e($imageUrl); ?>" alt="<?php echo e($airlineCode); ?>"
-                                                                title="<?php echo e($airlineCode); ?>" height="20px"></small>
-                                                    <small
-                                                        class="ms-1"> <?php echo e($flight->travelerPricings[0]->fareDetailsBySegment[0]->cabin); ?></small>
+                                                            title="<?php echo e($airlineCode); ?>" height="20px"></small>
+                                                    <small class="ms-1">
+                                                        <?php echo e($flight->travelerPricings[0]->fareDetailsBySegment[0]->cabin); ?></small>
                                                     Seats : <?php echo e($flight->numberOfBookableSeats); ?>
 
                                                 </p>
@@ -520,12 +541,13 @@
 
 
                                             </div>
-                                            
                                         </div>
-                                        <div
-                                            class="upper_card">
+                                        <div class="upper_card">
                                             <?php
-                                                $airline = \App\Models\Airline::where('code', $firstSegment->carrierCode)->first();
+                                                $airline = \App\Models\Airline::where(
+                                                    'code',
+                                                    $firstSegment->carrierCode,
+                                                )->first();
                                             ?>
                                             <p class="text-muted mb-1">
                                                 <small><?php echo e($airline ? $airline->name : 'Unknown Airline'); ?></small>
@@ -534,7 +556,7 @@
                                         </div>
 
                                         <div class="line"></div>
-                                        <hr/>
+                                        <hr />
                                         <div class="lower_card h-100">
 
                                             <h3 class="mb-0" style="font-weight:190;">
@@ -543,7 +565,8 @@
                                                         display: none;
                                                     }
                                                 </style>
-                                                <a href="#" class="toggle-details" data-flight-id="<?php echo e($flight->id); ?>">
+                                                <a href="#" class="toggle-details"
+                                                    data-flight-id="<?php echo e($flight->id); ?>">
                                                     <i class="fas fa-chevron-down"></i> <span>More Detail</span>
                                                 </a>
 
@@ -553,16 +576,18 @@
 
                                             </h3>
 
-                                            <form action="<?php echo e(route('flight-seat-map')); ?>" id="form<?php echo e($flight->id); ?>"
-                                                  method="POST" class="form">
+                                            <form action="<?php echo e(route('flight-seat-map')); ?>"
+                                                id="form<?php echo e($flight->id); ?>" method="POST" class="form">
                                                 <?php echo csrf_field(); ?>
                                                 <input type="hidden" name="flight"
-                                                       value="<?php echo e(json_encode($flight) ?? ''); ?>"/>
-                                                <input type="hidden" name="departure" value="<?php echo e($departure ?? ''); ?>"/>
+                                                    value="<?php echo e(json_encode($flight) ?? ''); ?>" />
+                                                <input type="hidden" name="departure"
+                                                    value="<?php echo e($departure ?? ''); ?>" />
                                                 <input type="hidden" name="flight_option"
-                                                       value="<?php echo e($flight_option ?? ''); ?>"/>
-                                                <input type="hidden" name="arrival" value="<?php echo e($arrival ?? ''); ?>"/>
-                                                <input type="hidden" name="offerId" value="<?php echo e($flight->id ?? ''); ?>"/>
+                                                    value="<?php echo e($flight_option ?? ''); ?>" />
+                                                <input type="hidden" name="arrival" value="<?php echo e($arrival ?? ''); ?>" />
+                                                <input type="hidden" name="offerId"
+                                                    value="<?php echo e($flight->id ?? ''); ?>" />
                                                 <button type="submit" class="btn btn-primary">Select</button>
                                             </form>
                                         </div>
@@ -580,8 +605,8 @@
 
 <script src="<?php echo e(asset('js/jquery-3.5.1.min.js')); ?>"></script>
 <script>
-    $(document).ready(function () {
-        $('.toggle-details').on('click', function (event) {
+    $(document).ready(function() {
+        $('.toggle-details').on('click', function(event) {
             event.preventDefault(); // Prevent the default action of the link
 
             // Get the flight ID from the data attribute
@@ -610,7 +635,6 @@
             console.log('Text Content:', $text.text());
         });
     });
-
 </script>
 
 <script>
@@ -627,24 +651,10 @@
     window.onload = clearInputs;
 
     // Clear inputs when the page is shown from the back-forward cache
-    window.addEventListener('pageshow', function (event) {
+    window.addEventListener('pageshow', function(event) {
         if (event.persisted) {
             clearInputs();
         }
     });
-
-    // document.addEventListener('DOMContentLoaded', function() {
-    //             var userMessageElement = document.getElementById('userMessage');
-    //                 if (userMessageElement) {
-    //                     setTimeout(function() {
-    //                         userMessageElement.style.display = 'none';
-    //                     }, 30000); // 5000 milliseconds = 5 seconds
-    //                 }
-    //             });
 </script>
-
-
-
-
-
 <?php /**PATH C:\Users\vince\Documents\Workspace\Abisiniya\abisiniya82\resources\views/layouts/flightsearchwidget.blade.php ENDPATH**/ ?>

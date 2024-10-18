@@ -1,4 +1,4 @@
-@if(!isset($flights))
+@if (!isset($flights))
     <style>
         .message {
             color: red;
@@ -12,25 +12,25 @@
                     Book flight
                 </h3>
             </div>
-            @if(session('message'))
+            @if (session('message'))
                 <div class="alert alert-warning">
                     {{ session('message') }}
                 </div>
             @endif
 
 
-            @if(session('userMessage'))
+            @if (session('userMessage'))
                 <div class="alert alert-warning" id="userMessage">
                     {{ session('userMessage') }}
                 </div>
             @endif
 
-            @if(count($errors) > 0)
+            @if (count($errors) > 0)
                 <div class="container card">
                     <div class="row">
                         <div class="col-12">
                             <div class="alert alert-danger">
-                                An error occurred while searching for a flight. <br/>
+                                An error occurred while searching for a flight. <br />
                                 Please ensure that you have entered the correct details:
                                 <ul>
                                     <li>1. Ensure accurate information for the departure and destination fields,
@@ -38,8 +38,8 @@
                                     </li>
                                     <li>2. Make sure the selected date is in the future.</li>
                                 </ul>
-                                <br/>
-                                If the issue persists, please review the error details below:<br/>
+                                <br />
+                                If the issue persists, please review the error details below:<br />
                                 <strong>Error:</strong> {{ $errors->first('exception') }}
                             </div>
                         </div>
@@ -86,9 +86,9 @@
                                             <!--<i class="bi bi-crosshair"></i>-->
                                             From
                                             <input type="text" class="form-control " placeholder="Where From"
-                                                   name="origin_airport" id="airportInput" required>
+                                                name="origin_airport" id="airportInput" required>
                                             <!-- Add a hidden input field to store the selected IATA code -->
-                                            <input type="hidden" name="origin" id="origin"/>
+                                            <input type="hidden" name="origin" id="origin" />
                                         </div>
                                     </div>
                                 </div>
@@ -98,10 +98,10 @@
                                             <!--<i class="bi bi-geo"></i>-->
                                             Destination
                                             <input type="text" class="form-control " style="width: 100%;"
-                                                   placeholder="Where To" name="destination_airport" id="airportTo"
-                                                   required>
+                                                placeholder="Where To" name="destination_airport" id="airportTo"
+                                                required>
                                             <!-- Add a hidden input field to store the selected IATA code -->
-                                            <input type="hidden" name="destination" id="destination"/>
+                                            <input type="hidden" name="destination" id="destination" />
                                         </div>
                                     </div>
                                 </div>
@@ -111,8 +111,8 @@
                                     <div class="mt-3">
                                         <div class="input-icon">
                                             Adults (12 years and older)
-                                            <input type="number" min="0" value="1" class="form-control" name="adults"
-                                                   id="adults-input" required>
+                                            <input type="number" min="0" value="1" class="form-control"
+                                                name="adults" id="adults-input" required>
                                             <div id="adult-message" class="message" style="display:none;">At least one
                                                 adult must be selected
                                             </div>
@@ -123,8 +123,8 @@
                                     <div class="mt-3">
                                         <div class="input-icon">
                                             Children (2 to 11 years old)
-                                            <input type="number" min="0" value="0" class="form-control" name="children"
-                                                   id="children-input">
+                                            <input type="number" min="0" value="0" class="form-control"
+                                                name="children" id="children-input">
                                             <div id="children-message" class="message" style="display:none;">Maximum 5
                                                 children allowed
                                             </div>
@@ -135,14 +135,14 @@
                                     <div class="mt-3">
                                         <div class="input-icon">
                                             Infants (Under 2 years old)
-                                            <input type="number" value="0" min="0" class="form-control" name="infants"
-                                                   id="infants-input">
+                                            <input type="number" value="0" min="0" class="form-control"
+                                                name="infants" id="infants-input">
                                             <div id="infant-message" class="message" style="display:none;"></div>
                                         </div>
                                     </div>
                                 </div>
                                 <script>
-                                    document.addEventListener("DOMContentLoaded", function () {
+                                    document.addEventListener("DOMContentLoaded", function() {
                                         const adultsInput = document.getElementById('adults-input');
                                         const childrenInput = document.getElementById('children-input');
                                         const infantsInput = document.getElementById('infants-input');
@@ -189,7 +189,8 @@
                                                 const maxPassengers = 9 - adults - infants;
                                                 //childrenInput.value = maxPassengers > 5 ? 5 : maxPassengers;
                                                 childrenInput.value = maxPassengers > 5 ? 5 : 0;
-                                                showMessage('total-message', 'Total passengers (adults, children, and infants) cannot exceed 9.');
+                                                showMessage('total-message',
+                                                    'Total passengers (adults, children, and infants) cannot exceed 9.');
                                             } else {
                                                 hideMessage('total-message');
                                             }
@@ -213,25 +214,25 @@
                                 </script>
 
                                 <span id="adult-infant-message" class="text-center"
-                                      style="display:none; color:red; text-align: left; margin-left: 33.33%;"></span>
+                                    style="display:none; color:red; text-align: left; margin-left: 33.33%;"></span>
                                 <span id="adult-child-message" class="text-center"
-                                      style="display:none; color:red; text-align: left; margin-left: 33.33%;"></span>
+                                    style="display:none; color:red; text-align: left; margin-left: 33.33%;"></span>
                                 <span id="total-message" class="text-center"
-                                      style="display:none; color:red; text-align: left; margin-left: 33.33%;"></span>
+                                    style="display:none; color:red; text-align: left; margin-left: 33.33%;"></span>
 
                             </div>
-                                <?php
-                                $currentDate = date('Y-m-d');
-                                $oneYearLater = date('Y-m-d', strtotime('+1 year', strtotime($currentDate)));
-                                ?>
+                            <?php
+                            $currentDate = date('Y-m-d');
+                            $oneYearLater = date('Y-m-d', strtotime('+1 year', strtotime($currentDate)));
+                            ?>
                             <div class="row">
                                 <div class="col-md-6 col-sm-6 col-12">
                                     <div class="mt-3">
                                         <div class="input-icon">
                                             Departure Date
-                                            <input type="date" min="<?php echo $currentDate; ?>"
-                                                   max="<?php echo $oneYearLater; ?>" class="form-control" id=""
-                                                   placeholder="Select Departure Date" name="departure_date" required>
+                                            <input type="date" min="<?php echo $currentDate; ?>" max="<?php echo $oneYearLater; ?>"
+                                                class="form-control" id=""
+                                                placeholder="Select Departure Date" name="departure_date" required>
                                         </div>
                                     </div>
                                 </div>
@@ -239,9 +240,9 @@
                                     <div class="mt-3">
                                         <div class="input-icon">
                                             Return Date
-                                            <input type="date" min="<?php echo $currentDate; ?>"
-                                                   max="<?php echo $oneYearLater; ?>" class="form-control" id=""
-                                                   placeholder="Select Return Date" name="return_date">
+                                            <input type="date" min="<?php echo $currentDate; ?>" max="<?php echo $oneYearLater; ?>"
+                                                class="form-control" id="" placeholder="Select Return Date"
+                                                name="return_date">
                                         </div>
                                     </div>
                                 </div>
@@ -260,16 +261,16 @@
     </section>
 @endif
 {{-- Display flight-related information --}}
-@if(isset($flights))
+@if (isset($flights))
     <section class="flight_list" style="padding-top: -30">
-        <p class=" alert alert-success text-center text-dark"><br/>
-            {{ $flight_option }} Search &nbsp;&nbsp; ✈️ <br/>
-            {{ count($flights) }} Results found<br/></p>
-        @if( count($flights) > 0)
+        <p class=" alert alert-success text-center text-dark"><br />
+            {{ $flight_option }} Search &nbsp;&nbsp; ✈️ <br />
+            {{ count($flights) }} Results found<br /></p>
+        @if (count($flights) > 0)
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        @foreach($flights as $flight)
+                        @foreach ($flights as $flight)
                             @if ($flight_option == 'return')
                                 <div class="row">
                                     <div class="col-12">
@@ -278,11 +279,15 @@
                                             $firstSegment = reset($segments);
 
                                             $accessTokenController = app('App\Http\Controllers\WelcomeController');
-                                            $departure = $accessTokenController->airportName($firstSegment->departure->iataCode);
+                                            $departure = $accessTokenController->airportName(
+                                                $firstSegment->departure->iataCode,
+                                            );
 
                                             // Get the last segment
                                             $lastSegment = end($segments);
-                                            $arrival = $accessTokenController->airportName($lastSegment->arrival->iataCode);
+                                            $arrival = $accessTokenController->airportName(
+                                                $lastSegment->arrival->iataCode,
+                                            );
 
                                             $airlineCode = $firstSegment->carrierCode;
                                             // $imageUrl = "https://www.gstatic.com/flights/airline_logos/70px/dark/{$airlineCode}.png";
@@ -304,20 +309,21 @@
                                                 <div class="upper_card">
                                                     <p class="text-muted mb-1"><small>Departing Flight</small>
                                                         <small
-                                                            class="ms-1">({{  \Carbon\Carbon::parse($firstSegment->departure->at)->format('d-m-Y') }}
+                                                            class="ms-1">({{ \Carbon\Carbon::parse($firstSegment->departure->at)->format('d-m-Y') }}
                                                             )</small>
                                                     </p>
                                                 </div>
                                                 <div class="split_cards">
                                                     <div class="card_one">
                                                         <p>
-                                                            <small>{{  \Carbon\Carbon::parse($firstSegment->departure->at)->format('H:i')  }}</small>
+                                                            <small>{{ \Carbon\Carbon::parse($firstSegment->departure->at)->format('H:i') }}</small>
                                                         </p>
                                                         <p>
-                                                            <small>{{ formatDuration( $flight->itineraries[0]->duration) }}</small>
+                                                            <small>{{ formatDuration($flight->itineraries[0]->duration) }}</small>
                                                         </p>
                                                         <p>
-                                                            <small>{{  \Carbon\Carbon::parse($lastSegment->arrival->at)->format('H:i')  }} </small>
+                                                            <small>{{ \Carbon\Carbon::parse($lastSegment->arrival->at)->format('H:i') }}
+                                                            </small>
                                                         </p>
                                                     </div>
                                                     <div class="card_two">
@@ -328,47 +334,51 @@
                                                     <div class="card_one">
                                                         <p>
                                                             <small>{{ $departure }}
-                                                                ({{  $firstSegment->departure->iataCode }})</small>
+                                                                ({{ $firstSegment->departure->iataCode }})
+                                                            </small>
                                                         </p>
                                                         <p>
-                                                            <small><img src="{{ $imageUrl }}" alt="{{ $airlineCode }}"
-                                                                        title="{{ $airlineCode }}"
-                                                                        height="20px"></small>
-                                                            <small
-                                                                class="ms-1"> {{ $flight->travelerPricings[0]->fareDetailsBySegment[0]->cabin }}</small>
+                                                            <small><img src="{{ $imageUrl }}"
+                                                                    alt="{{ $airlineCode }}"
+                                                                    title="{{ $airlineCode }}"
+                                                                    height="20px"></small>
+                                                            <small class="ms-1">
+                                                                {{ $flight->travelerPricings[0]->fareDetailsBySegment[0]->cabin }}</small>
                                                         </p>
                                                         <p>
                                                             <small>{{ $arrival }}
-                                                                ({{  $lastSegment->arrival->iataCode }})</small>
+                                                                ({{ $lastSegment->arrival->iataCode }})</small>
                                                         </p>
                                                     </div>
                                                 </div>
                                                 <div class="upper_card">
                                                     <p class="text-muted mb-1">
-                                                        <small>{{\App\Models\Airline::where('code', $firstSegment->carrierCode)->first()->name}}</small>
-                                                        <small class="ms-1">({{  $firstSegment->carrierCode }})</small>
+                                                        <small>{{ \App\Models\Airline::where('code', $firstSegment->carrierCode)->first()->name }}</small>
+                                                        <small
+                                                            class="ms-1">({{ $firstSegment->carrierCode }})</small>
                                                     </p>
                                                 </div>
                                                 <div class="line"></div>
-                                                <hr/>
+                                                <hr />
                                                 <!-------- return flight-->
                                                 <div class="upper_card">
                                                     <p class="text-muted mb-1"><small>Returning Flight</small>
                                                         <small
-                                                            class="ms-1">({{  \Carbon\Carbon::parse($second_firstSegment->departure->at)->format('d-m-Y') }}
+                                                            class="ms-1">({{ \Carbon\Carbon::parse($second_firstSegment->departure->at)->format('d-m-Y') }}
                                                             )</small>
                                                     </p>
                                                 </div>
                                                 <div class="split_cards">
                                                     <div class="card_one">
                                                         <p>
-                                                            <small>{{  \Carbon\Carbon::parse($second_firstSegment->departure->at)->format('H:i')  }}</small>
+                                                            <small>{{ \Carbon\Carbon::parse($second_firstSegment->departure->at)->format('H:i') }}</small>
                                                         </p>
                                                         <p>
-                                                            <small>{{ formatDuration( $flight->itineraries[1]->duration) }}</small>
+                                                            <small>{{ formatDuration($flight->itineraries[1]->duration) }}</small>
                                                         </p>
                                                         <p>
-                                                            <small>{{  \Carbon\Carbon::parse($second_lastSegment->arrival->at)->format('H:i')  }} </small>
+                                                            <small>{{ \Carbon\Carbon::parse($second_lastSegment->arrival->at)->format('H:i') }}
+                                                            </small>
                                                         </p>
                                                     </div>
                                                     <div class="card_two">
@@ -379,31 +389,33 @@
                                                     <div class="card_one">
                                                         <p>
                                                             <small>{{ $arrival }}
-                                                                ({{  $second_firstSegment->departure->iataCode }}
+                                                                ({{ $second_firstSegment->departure->iataCode }}
                                                                 )</small>
                                                         </p>
                                                         <p>
                                                             <small><img src="{{ $second_imageUrl }}"
-                                                                        alt="{{ $second_airlineCode }}"
-                                                                        title="{{ $second_airlineCode }}" height="20px"></small>
-                                                            <small
-                                                                class="ms-1"> {{ $flight->travelerPricings[0]->fareDetailsBySegment[0]->cabin }}</small>
+                                                                    alt="{{ $second_airlineCode }}"
+                                                                    title="{{ $second_airlineCode }}"
+                                                                    height="20px"></small>
+                                                            <small class="ms-1">
+                                                                {{ $flight->travelerPricings[0]->fareDetailsBySegment[0]->cabin }}</small>
                                                         </p>
                                                         <p>
                                                             <small>{{ $departure }}
-                                                                ({{  $second_lastSegment->arrival->iataCode }})</small>
+                                                                ({{ $second_lastSegment->arrival->iataCode }})</small>
                                                         </p>
                                                     </div>
                                                 </div>
                                                 <div class="upper_card">
                                                     <p class="text-muted mb-1">
-                                                        <small>{{\App\Models\Airline::where('code', $firstSegment->carrierCode)->first()->name}}</small>
-                                                        <small class="ms-1">({{  $firstSegment->carrierCode }})</small>
+                                                        <small>{{ \App\Models\Airline::where('code', $firstSegment->carrierCode)->first()->name }}</small>
+                                                        <small
+                                                            class="ms-1">({{ $firstSegment->carrierCode }})</small>
                                                     </p>
                                                 </div>
 
                                                 <div class="line"></div>
-                                                <hr/>
+                                                <hr />
                                                 <div class="lower_card h-100">
 
                                                     <h3 class="mb-0">
@@ -411,16 +423,18 @@
                                                     </h3>
 
                                                     <form action="{{ route('flight-price') }}"
-                                                          id="form{{ $flight->id }}" method="GET" class="form">
+                                                        id="form{{ $flight->id }}" method="GET" class="form">
                                                         @csrf
                                                         <input type="hidden" name="flight"
-                                                               value="{{ json_encode($flight) }}"/>
+                                                            value="{{ json_encode($flight) }}" />
                                                         <input type="hidden" name="flightofferid"
-                                                               value="{{ $flight->id }}"/>
-                                                        <input type="hidden" name="departure" value="{{ $departure }}"/>
-                                                        <input type="hidden" name="arrival" value="{{ $arrival }}"/>
+                                                            value="{{ $flight->id }}" />
+                                                        <input type="hidden" name="departure"
+                                                            value="{{ $departure }}" />
+                                                        <input type="hidden" name="arrival"
+                                                            value="{{ $arrival }}" />
                                                         <input type="hidden" name="flight_option"
-                                                               value="{{ $flight_option }}"/>
+                                                            value="{{ $flight_option }}" />
                                                         <button type="submit" class="btn btn-primary">Select</button>
                                                     </form>
 
@@ -430,13 +444,14 @@
                                         </div>
                                     </div>
                                 </div>
-
                             @else
                                 @php
                                     $segments = $flight->itineraries[0]->segments;
                                     $firstSegment = reset($segments);
                                     $accessTokenController = app('App\Http\Controllers\WelcomeController');
-                                    $departure = $accessTokenController->airportName($firstSegment->departure->iataCode);
+                                    $departure = $accessTokenController->airportName(
+                                        $firstSegment->departure->iataCode,
+                                    );
                                     // Get the last segment
                                     $lastSegment = end($segments);
                                     $arrival = $accessTokenController->airportName($lastSegment->arrival->iataCode);
@@ -449,20 +464,21 @@
                                         <div class="upper_card">
                                             <p class="text-muted mb-1"><small>Departing Flight </small>
                                                 <small
-                                                    class="ms-1">({{  \Carbon\Carbon::parse($firstSegment->departure->at)->format('d-m-Y') }}
+                                                    class="ms-1">({{ \Carbon\Carbon::parse($firstSegment->departure->at)->format('d-m-Y') }}
                                                     )</small>
                                             </p>
                                         </div>
                                         <div class="split_cards">
                                             <div class="card_one">
                                                 <p>
-                                                    <small>{{  \Carbon\Carbon::parse($firstSegment->departure->at)->format('H:i')  }}</small>
+                                                    <small>{{ \Carbon\Carbon::parse($firstSegment->departure->at)->format('H:i') }}</small>
                                                 </p>
                                                 <p>
-                                                    <small>{{ formatDuration( $flight->itineraries[0]->duration) }}</small>
+                                                    <small>{{ formatDuration($flight->itineraries[0]->duration) }}</small>
                                                 </p>
                                                 <p>
-                                                    <small>{{  \Carbon\Carbon::parse($lastSegment->arrival->at)->format('H:i')  }} </small>
+                                                    <small>{{ \Carbon\Carbon::parse($lastSegment->arrival->at)->format('H:i') }}
+                                                    </small>
                                                 </p>
                                             </div>
                                             <div class="card_two">
@@ -474,15 +490,16 @@
 
                                             <div class="card_one">
                                                 <p>
-                                                    <small>{{ $departure }} ({{  $firstSegment->departure->iataCode }}
+                                                    <small>{{ $departure }}
+                                                        ({{ $firstSegment->departure->iataCode }}
                                                         )</small>
                                                 </p>
                                                 <p>
                                                     &nbsp;
                                                     <small><img src="{{ $imageUrl }}" alt="{{ $airlineCode }}"
-                                                                title="{{ $airlineCode }}" height="20px"></small>
-                                                    <small
-                                                        class="ms-1"> {{ $flight->travelerPricings[0]->fareDetailsBySegment[0]->cabin }}</small>
+                                                            title="{{ $airlineCode }}" height="20px"></small>
+                                                    <small class="ms-1">
+                                                        {{ $flight->travelerPricings[0]->fareDetailsBySegment[0]->cabin }}</small>
                                                     Seats : {{ $flight->numberOfBookableSeats }}
                                                 </p>
                                                 <p>
@@ -506,29 +523,22 @@
                                                 {{ $flight->price->total }}
 
                                             </div>
-                                            {{--
-                                            <div class="card_two" style="padding-left: 50px;">
-                                                <form action="{{ route('flights.seatMap') }}" method="POST">
-                                                    @csrf
-                                                    <input type="hidden" name="flightOffer" value="{{ json_encode($flight) }}">
-                                                    <button type="submit">View Seat Map</button>
-                                                </form>
-                                            </div>
-                                            --}}
                                         </div>
-                                        <div
-                                            class="upper_card">{{-- \App\Models\Airline::where('code', $firstSegment->carrierCode)->first()->name --}}
+                                        <div class="upper_card">
                                             @php
-                                                $airline = \App\Models\Airline::where('code', $firstSegment->carrierCode)->first();
+                                                $airline = \App\Models\Airline::where(
+                                                    'code',
+                                                    $firstSegment->carrierCode,
+                                                )->first();
                                             @endphp
                                             <p class="text-muted mb-1">
                                                 <small>{{ $airline ? $airline->name : 'Unknown Airline' }}</small>
-                                                <small class="ms-1">({{  $firstSegment->carrierCode }})</small>
+                                                <small class="ms-1">({{ $firstSegment->carrierCode }})</small>
                                             </p>
                                         </div>
 
                                         <div class="line"></div>
-                                        <hr/>
+                                        <hr />
                                         <div class="lower_card h-100">
 
                                             <h3 class="mb-0" style="font-weight:190;">
@@ -537,7 +547,8 @@
                                                         display: none;
                                                     }
                                                 </style>
-                                                <a href="#" class="toggle-details" data-flight-id="{{ $flight->id }}">
+                                                <a href="#" class="toggle-details"
+                                                    data-flight-id="{{ $flight->id }}">
                                                     <i class="fas fa-chevron-down"></i> <span>More Detail</span>
                                                 </a>
 
@@ -547,16 +558,18 @@
 
                                             </h3>
 
-                                            <form action="{{ route('flight-seat-map') }}" id="form{{ $flight->id }}"
-                                                  method="POST" class="form">
+                                            <form action="{{ route('flight-seat-map') }}"
+                                                id="form{{ $flight->id }}" method="POST" class="form">
                                                 @csrf
                                                 <input type="hidden" name="flight"
-                                                       value="{{ json_encode($flight) ?? ''}}"/>
-                                                <input type="hidden" name="departure" value="{{ $departure ?? ''}}"/>
+                                                    value="{{ json_encode($flight) ?? '' }}" />
+                                                <input type="hidden" name="departure"
+                                                    value="{{ $departure ?? '' }}" />
                                                 <input type="hidden" name="flight_option"
-                                                       value="{{ $flight_option ?? ''}}"/>
-                                                <input type="hidden" name="arrival" value="{{ $arrival ?? ''}}"/>
-                                                <input type="hidden" name="offerId" value="{{ $flight->id ?? ''}}"/>
+                                                    value="{{ $flight_option ?? '' }}" />
+                                                <input type="hidden" name="arrival" value="{{ $arrival ?? '' }}" />
+                                                <input type="hidden" name="offerId"
+                                                    value="{{ $flight->id ?? '' }}" />
                                                 <button type="submit" class="btn btn-primary">Select</button>
                                             </form>
                                         </div>
@@ -574,8 +587,8 @@
 
 <script src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
 <script>
-    $(document).ready(function () {
-        $('.toggle-details').on('click', function (event) {
+    $(document).ready(function() {
+        $('.toggle-details').on('click', function(event) {
             event.preventDefault(); // Prevent the default action of the link
 
             // Get the flight ID from the data attribute
@@ -604,7 +617,6 @@
             console.log('Text Content:', $text.text());
         });
     });
-
 </script>
 
 <script>
@@ -621,23 +633,9 @@
     window.onload = clearInputs;
 
     // Clear inputs when the page is shown from the back-forward cache
-    window.addEventListener('pageshow', function (event) {
+    window.addEventListener('pageshow', function(event) {
         if (event.persisted) {
             clearInputs();
         }
     });
-
-    // document.addEventListener('DOMContentLoaded', function() {
-    //             var userMessageElement = document.getElementById('userMessage');
-    //                 if (userMessageElement) {
-    //                     setTimeout(function() {
-    //                         userMessageElement.style.display = 'none';
-    //                     }, 30000); // 5000 milliseconds = 5 seconds
-    //                 }
-    //             });
 </script>
-
-
-
-
-

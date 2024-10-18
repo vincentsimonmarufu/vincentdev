@@ -57,8 +57,8 @@
                                             <div class="trend-image1">
                                                 @if ($apartment->pictures->first() !== null && $apartment->pictures->first()->path)
                                                     <a href="{{ route('apartments.view', $apartment->id) }}"
-                                                        style="background-image: url({{ asset('storage/Apartment/' . $apartment->pictures->first()->path) }});"
-                                                        alt="{{ $apartment->address }}" loading="lazy"></a>
+                                                       style="background-image: url({{ asset('storage/Apartment/' . $apartment->pictures->first()->path) }});"
+                                                       alt="{{ $apartment->address }}" loading="lazy"></a>
                                                 @endif
                                             </div>
                                         </div>
@@ -142,12 +142,12 @@
                                 @foreach ($vehicles as $vehicle)
                                     <div class="target col-lg-4 col-md-6 mb-4" id="target">
                                         <div class="trend-item box-shadow rounded"
-                                            style="background: #ffffff; border-color: #ffffff; border:5em">
+                                             style="background: #ffffff; border-color: #ffffff; border:5em">
                                             <div class="trend-image imagesize">
                                                 @if ($vehicle->pictures->first() !== null && $vehicle->pictures->first()->path)
                                                     <a href="{{ route('car_hire.view', $vehicle->id) }}">
                                                         <img src="{{ asset('storage/Vehicle/' . $vehicle->pictures->first()->path) }}"
-                                                            alt="{{ $vehicle->model }}" alt="image" loading="lazy">
+                                                             alt="{{ $vehicle->model }}" alt="image" loading="lazy">
                                                     </a>
                                                 @endif
                                             </div>
@@ -229,7 +229,7 @@
                     <div class="col-lg-3 col-md-4 col-xs-6">
                         <div class="client-logo">
                             <img src="{{ asset('assets/img/partners/toppng.com-logo-iata-980x312.png') }}"
-                                class="img-fluid" alt="Emirates" loading="lazy">
+                                 class="img-fluid" alt="Emirates" loading="lazy">
                         </div>
                     </div>
 
@@ -248,7 +248,7 @@
                     <div class="col-lg-3 col-md-4 col-xs-6">
                         <div class="client-logo">
                             <img src="assets/img/airlines/3.png" class="img-fluid" alt="RwanAir" loading="lazy"
-                                loading="lazy">
+                                 loading="lazy">
                         </div>
                     </div>
 
@@ -273,7 +273,7 @@
                     <div class="col-lg-3 col-md-4 col-xs-6">
                         <div class="client-logo">
                             <img src="assets/img/airlines/7.png" class="img-fluid" alt="Ethiopean Airways"
-                                loading="lazy">
+                                 loading="lazy">
                         </div>
                     </div>
 
@@ -347,4 +347,126 @@
         </section>-->
         <!-- testimonial ends -->
     </main><!-- End #main -->
+@endsection
+
+@section('scripts')
+    <!-- Add these CDN links to your HTML -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            const airports = [
+                    @foreach ($airports as $airport)
+                {
+                    label: " 🛫 {{ $airport['name'] }}  ({{ $airport['iata'] }}) | {{ $airport['city'] }}, {{ $airport['country'] }} ",
+                    name: " {{ $airport['name'] }} ",
+                    value: "{{ $airport['iata'] }}",
+                    latitude: "{{ $airport['lat'] }}",
+                    longitude: "{{ $airport['lon'] }}",
+                },
+                @endforeach
+            ];
+
+            $(function() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+                }
+
+                function successCallback(position) {
+                    const userLatitude = position.coords.latitude;
+                    const userLongitude = position.coords.longitude;
+                    // Calculate the closest airport
+                    const closestAirport = findClosestAirport(userLatitude, userLongitude);
+
+                    // Set the closest airport as selected
+                    $("#airportInput").val(closestAirport.name);
+                    $("#origin").val(closestAirport.value);
+                }
+
+                function errorCallback(error) {
+                    console.error(`Geolocation error: ${error.message}`);
+                }
+
+                function findClosestAirport(userLatitude, userLongitude) {
+                    let closestAirport = null;
+                    let closestDistance = Infinity;
+
+                    airports.forEach(airport => {
+                        const distance = calculateDistance(userLatitude, userLongitude, airport
+                            .latitude, airport.longitude);
+
+                        if (distance < closestDistance) {
+                            closestDistance = distance;
+                            closestAirport = airport;
+                        }
+                    });
+
+                    return closestAirport;
+                }
+
+                function calculateDistance(lat1, lon1, lat2, lon2) {
+                    // Implement the Haversine formula or any other distance calculation method
+                    const R = 6371; // Radius of the Earth in kilometers
+                    const dLat = deg2rad(lat2 - lat1);
+                    const dLon = deg2rad(lon2 - lon1);
+
+                    const a =
+                        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                        Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+                        Math.sin(dLon / 2) * Math.sin(dLon / 2);
+
+                    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+                    const distance = R * c; // Distance in kilometers
+
+                    // Round the distance to 2 decimal places (adjust as needed)
+                    return Math.round(distance * 100) / 100;
+                }
+
+                function deg2rad(deg) {
+                    return deg * (Math.PI / 180);
+                }
+
+
+                $("#airportInput").autocomplete({
+                    source: airports,
+                    select: function(event, ui) {
+                        $("#airportInput").val(ui.item.name);
+                        $("#origin").val(ui.item.value);
+                        event.preventDefault();
+                    }
+                });
+
+                $("#airportTo").autocomplete({
+                    source: airports,
+                    select: function(event, ui) {
+                        $("#airportTo").val(ui.item.name);
+                        $("#destination").val(ui.item.value);
+                        event.preventDefault();
+                    }
+                });
+
+                $("#airportInputM").autocomplete({
+                    source: airports,
+                    select: function(event, ui) {
+                        $("#airportInputM").val(ui.item.name);
+                        $("#originM").val(ui.item.value);
+                        event.preventDefault();
+                    }
+                });
+
+                $("#airportToM").autocomplete({
+                    source: airports,
+                    select: function(event, ui) {
+                        $("#airportToM").val(ui.item.name);
+                        $("#destinationM").val(ui.item.value);
+                        event.preventDefault();
+                    }
+                });
+
+            });
+
+        });
+    </script>
+    <script src="{{ asset('assets/js/flights.js') }}"></script>
 @endsection

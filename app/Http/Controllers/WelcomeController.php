@@ -59,7 +59,8 @@ class WelcomeController extends Controller
         $apartments = Apartment::where('status', 'active')->inRandomOrder()->limit(6)->get();
         $vehicles = Vehicle::where('status', 'active')->inRandomOrder()->limit(6)->get();
         $cities = Apartment::select('city as name')->distinct()->get();
-        return view('welcome', compact('apartments', 'cities', 'vehicles'));
+        $airports = $this->getAirports();
+        return view('welcome', compact('apartments', 'cities', 'vehicles','airports'));
     }
 
     public function about()
@@ -233,6 +234,7 @@ class WelcomeController extends Controller
 
         // Access the lazy-loaded airports list
         $airports = $this->getAirports();
+
         //return $airports;
         return view('amadeus.search', compact('airports', 'userMessage'));
     }
@@ -250,6 +252,36 @@ class WelcomeController extends Controller
     // flight search for one-way and round-trip
     function flightsearch(Request $request, Client $client)
     {
+        if ($request->flight_option === 'one-way') {
+            // Validate fields for "one-way" flight option
+            $request->validate([
+                'origin_airport' => 'required|string',
+                'origin' => 'required|string',
+                'destination_airport' => 'required|string',
+                'destination' => 'required|string',
+                'cabin' => 'required|string',
+                'currency' => 'required|string',
+                'adults' => 'required|integer|min:1',
+                'children' => 'nullable|integer|min:0',
+                'infants' => 'nullable|integer|min:0',
+                'departure_date' => 'required|date|after_or_equal:today'
+            ]);
+        } elseif ($request->flight_option === 'return') {
+            // Validate fields for "return" flight option
+            $request->validate([
+                'origin_airport' => 'required|string',
+                'origin' => 'required|string',
+                'destination_airport' => 'required|string',
+                'destination' => 'required|string',
+                'cabin' => 'required|string',
+                'currency' => 'required|string',
+                'adults' => 'required|integer|min:1',
+                'children' => 'nullable|integer|min:0',
+                'infants' => 'nullable|integer|min:0',
+                'departure_date' => 'required|date|after_or_equal:today',
+                'return_date' => 'required|date|after:departure_date', // Validate return date
+            ]);
+        }
         $url = 'https://test.travel.api.amadeus.com/v2/shopping/flight-offers';
         $access_token = $this->accessTokenService->getAccessToken($client);
 
